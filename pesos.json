@@ -30,6 +30,10 @@
     "base_prismatic":{ "nombre": "Base Prismatic Ring",      "patron": "^Base: .*Prismatic Ring",                      "bueno": 1 },
     "espiritu":      { "nombre": "Espiritu",                 "patron": "\\+(\\d+) to Spirit",                         "bueno": 50 },
     "anoint":        { "nombre": "Anoint Growing Swarm",     "patron": "Allocates Growing Swarm",                      "bueno": 1 },
+    "frasco_recupera": { "nombre": "Cantidad recuperada %",  "patron": "(\\d+)% increased Amount Recovered",          "bueno": 60 },
+    "frasco_menos_cargas": { "nombre": "Menos cargas por uso", "patron": "(\\d+)% reduced Charges per use",          "bueno": 25 },
+    "frasco_cargas":  { "nombre": "Cargas ganadas %",        "patron": "(\\d+)% increased Charges gained",            "bueno": 60 },
+    "frasco_instant": { "nombre": "Recuperacion instantanea", "patron": "^Instant Recovery",                           "bueno": 1 },
     "fisico_pct":    { "nombre": "Dano fisico % del arma",   "patron": "(\\d+)% increased Physical Damage",            "bueno": 200 }
   },
 
@@ -82,6 +86,12 @@
       "consejo": "119 vida, 15% a todas las resistencias, 30% dano de minions, +10 atributos. Base Prismatic o con mucha resistencia.",
       "mods_para_10": 4,
       "pesos": { "vida": [9, 119], "res_total": [9, 45], "dano_minions": [8, 30], "atributos": [4, 10], "crit_minions": [4, 29], "base_prismatic": 2, "res_caos": 2 }
+    },
+    "frascos": {
+      "clases": ["Life Flasks", "Mana Flasks"],
+      "consejo": "Mas cantidad recuperada y menos uso de cargas.",
+      "mods_para_10": 2,
+      "pesos": { "frasco_recupera": 10, "frasco_menos_cargas": 10, "frasco_cargas": 5, "frasco_instant": 4 }
     },
     "cinturon": {
       "clases": ["Belts"],

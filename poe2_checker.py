@@ -41,6 +41,9 @@ CLASES_POR_BASE = [
 
 def clase_por_base(base):
     """Si el texto no trae 'Item Class:', deduce la clase por el nombre de la base."""
+    for clase in ("Life Flask", "Mana Flask"):
+        if clase in base:
+            return clase + "s"
     palabras = base.split()
     for clase, claves in CLASES_POR_BASE:
         if any(c in palabras for c in claves):
@@ -205,7 +208,7 @@ def puntuar(item, cfg):
     res["nota"] = nota
 
     # lineas ya contadas dentro de un valor calculado (resistencias, dano del arma)
-    cubiertas = []
+    cubiertas = [r"^Recovers \d+ |^Consumes \d+ of|^Currently has \d+ Charges"]   # propiedades de frascos
     derivs = {cfg["stats"][s].get("derivado") for s in grupo["pesos"]}
     if "res_total" in derivs:
         cubiertas.append(r"% to (Fire|Cold|Lightning) Resistance|% to all Elemental Resistances")
