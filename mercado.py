@@ -157,11 +157,12 @@ def id_stat(indice, texto):
 
 
 # ---------------------------------------------------------------- consulta
-def construir_consulta(grupo_id, precio_max, moneda, cfg, mer, pesos, indice):
+def construir_consulta(grupo_id, precio_max, moneda, cfg, mer, pesos, indice, max_filtros=99):
     gm = mer["grupos"][grupo_id]
     grupo = pesos["grupos"][grupo_id]
     avisos = []
     filtros_peso = []
+    por_stat = []
     for sid, regla in grupo["pesos"].items():
         stat = pesos["stats"][sid]
         peso = regla[0] if isinstance(regla, list) else regla
@@ -174,12 +175,24 @@ def construir_consulta(grupo_id, precio_max, moneda, cfg, mer, pesos, indice):
             ids = [(id_stat(indice, texto), mult) for texto, mult in opcion]
             ids = [(i, m) for i, m in ids if i]
             if ids:
-                for i, m in ids:
-                    filtros_peso.append({"id": i, "value": {"weight": round(peso * m / float(bueno), 4)}})
+                por_stat.append((peso, stat["nombre"], [
+                    {"id": i, "value": {"weight": round(peso * m / float(bueno), 4)}} for i, m in ids]))
                 hecho = True
                 break
         if not hecho:
             avisos.append("El mercado no reconoce el stat '%s'; no se uso para ordenar." % stat["nombre"])
+
+    # el mercado limita cuantos filtros admite: entran primero los stats de mas peso
+    por_stat.sort(key=lambda t: -t[0])
+    fuera = []
+    for peso, nombre, filtros in por_stat:
+        if len(filtros_peso) + len(filtros) <= max_filtros:
+            filtros_peso += filtros
+        else:
+            fuera.append(nombre)
+    if fuera:
+        avisos.append("Por el limite del mercado, la busqueda no ordeno por: %s (si cuentan en la nota)."
+                      % ", ".join(fuera))
 
     q = {"status": {"option": cfg["estado"]}, "filters": {}}
     q["filters"]["trade_filters"] = {"filters": {"price": {"max": precio_max, "option": moneda}}}
@@ -251,10 +264,20 @@ def buscar(grupo_id, precio_max, moneda="divine", log=lambda m: None):
     log("Leyendo la lista de stats del mercado...")
     indice = cargar_stats(cfg)
     liga = liga_id(cfg)
-    cuerpo, avisos = construir_consulta(grupo_id, precio_max, moneda, cfg, mer, pesos, indice)
-
     log("Buscando en la liga '%s'..." % liga)
-    r = http(cfg, "POST", "/search/poe2/" + urllib.parse.quote(liga), cuerpo)
+    r = None
+    for max_filtros in (cfg.get("max_filtros", 8), 6, 4, 3, 2, 1):
+        cuerpo, avisos = construir_consulta(grupo_id, precio_max, moneda, cfg, mer, pesos, indice, max_filtros)
+        try:
+            r = http(cfg, "POST", "/search/poe2/" + urllib.parse.quote(liga), cuerpo)
+            break
+        except ErrorMercado as e:
+            if "too complex" not in str(e).lower():
+                raise
+            log("El mercado pide una busqueda mas simple; reintento con menos filtros (%d)..." % max_filtros)
+    if r is None:
+        raise ErrorMercado("El mercado rechaza la busqueda por compleja incluso con un solo filtro. "
+                           "Iniciar sesion sube ese limite: pon tu cookie POESESSID en config.json.")
     ids = r.get("result", [])[:cfg["items_a_revisar"]]
     out = {"liga": liga, "total": r.get("total", len(ids)), "avisos": avisos, "resultados": [],
            "url": "%s/%s/%s" % (WEB, urllib.parse.quote(liga), r.get("id", "")),
