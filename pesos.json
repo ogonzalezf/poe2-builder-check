@@ -91,7 +91,7 @@
       "clases": ["Rings"],
       "consejo": "119 vida, 15% a todas las resistencias, 30% dano de minions, +10 atributos. Base Prismatic o con mucha resistencia.",
       "mods_para_10": 4,
-      "pesos": { "vida": [9, 119], "res_total": [9, 45], "dano_minions": [8, 30], "atributos": [4, 10], "crit_minions": [4, 29], "base_prismatic": 2, "res_caos": 2 }
+      "pesos": { "vida": [9, 119], "res_total": [9, 45], "dano_minions": [8, 30], "atributos": [4, 10], "crit_minions": [4, 29], "vida_minions": [3, 30], "base_prismatic": 2, "res_caos": 2 }
     },
     "lavianga": {
       "nombres": ["Lavianga's Spirits"],
