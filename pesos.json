@@ -21,7 +21,7 @@
     "crit_minions":  { "nombre": "Dano critico de minions",  "patron": "Minions have (\\d+)% increased Critical Damage Bonus", "bueno": 29 },
     "vida_minions":  { "nombre": "Vida de minions %",        "patron": "Minions have (\\d+)% increased maximum Life",  "bueno": 30 },
     "splash":        { "nombre": "Melee Splash de minions",  "patron": "Strikes have Melee Splash",                    "bueno": 1 },
-    "charm_slots":   { "nombre": "Ranuras de charm",         "patron": "Charm Slots?: (\\d+)",                         "bueno": 2 },
+    "charm_slots":   { "nombre": "Ranuras de charm",         "patron": "Has (\\d+) Charm Slots?|Charm Slots?: (\\d+)",                         "bueno": 2 },
     "espiritu_pct":  { "nombre": "Espiritu %",               "patron": "(\\d+)% increased Spirit",                     "bueno": 28 },
     "aliados_dano":  { "nombre": "Dano de aliados %",        "patron": "Allies in your Presence deal (\\d+)% increased Damage", "bueno": 119 },
     "aliados_crit":  { "nombre": "Dano critico de aliados",  "patron": "Allies in your Presence have (\\d+)% increased Critical Damage Bonus", "bueno": 39 },
