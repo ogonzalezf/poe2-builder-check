@@ -35,6 +35,9 @@
     "frasco_cargas":  { "nombre": "Cargas ganadas %",        "patron": "(\\d+)% increased Charges gained",            "bueno": 60 },
     "frasco_instant": { "nombre": "Recuperacion instantanea", "patron": "^Instant Recovery",                           "bueno": 1 },
     "lavianga_roll":  { "nombre": "Reduccion de cantidad (menos es mejor)", "patron": "(\\d+)% reduced Amount Recovered", "bueno": 70 },
+    "charm_tipo":     { "nombre": "Tipo de charm que pide la guia", "patron": "^Base: .*(?:Thawing Charm|Silver Charm|Forsaken Bangle)", "bueno": 1 },
+    "charm_cargas":   { "nombre": "Cargas del charm %",      "patron": "(\\d+)% increased Charges$",                  "bueno": 55 },
+    "charm_duracion": { "nombre": "Duracion del charm %",    "patron": "(\\d+)% increased Duration",                  "bueno": 30 },
     "fisico_pct":    { "nombre": "Dano fisico % del arma",   "patron": "(\\d+)% increased Physical Damage",            "bueno": 200 }
   },
 
@@ -93,6 +96,13 @@
       "consejo": "Alternativa al frasco de mana de la guia: regenera mana siempre, sin usarlo. Mejor tirada: 70% reduced.",
       "mods_para_10": 2,
       "pesos": { "lavianga_roll": [8, 70, 80], "frasco_menos_cargas": 2 }
+    },
+    "charms": {
+      "clases": ["Charms"],
+      "consejo": "Charms de la guia: anti-slow (Silver), anti-congelacion (Thawing) y el unico Forsaken Bangle.",
+      "mods_para_10": 3,
+      "obligatorios": ["charm_tipo"],
+      "pesos": { "charm_tipo": 10, "charm_cargas": 3, "charm_duracion": 3, "frasco_cargas": 3, "frasco_menos_cargas": 3 }
     },
     "frascos": {
       "clases": ["Life Flasks", "Mana Flasks"],

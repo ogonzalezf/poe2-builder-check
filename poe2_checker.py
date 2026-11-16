@@ -41,6 +41,8 @@ CLASES_POR_BASE = [
 
 def clase_por_base(base):
     """Si el texto no trae 'Item Class:', deduce la clase por el nombre de la base."""
+    if "Charm" in base.split():
+        return "Charms"
     for clase in ("Life Flask", "Mana Flask"):
         if clase in base:
             return clase + "s"
