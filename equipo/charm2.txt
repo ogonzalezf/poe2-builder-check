@@ -1,0 +1,15 @@
+Rarity: Magic
+Examiner's Silver Charm of the Abundant
+--------
+Lasts 3.90 Seconds
+Consumes 20 of 62 Charges on use
+Currently has 62 Charges
+--------
+Requires: Level 49
+--------
+Item Level: 80
+--------
+Used when you are affected by a Slow (implicit)
+--------
+30% increased Duration
+56% increased Charges

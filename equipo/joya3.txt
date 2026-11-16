@@ -1,0 +1,10 @@
+Rarity: Rare
+Ghoul Wound
+Sapphire
+--------
+Item Level: 80
+--------
+14% faster start of Energy Shield Recharge
+Minions deal 15% increased Damage
+Minions have +5% to all Elemental Resistances
+Minions have 19% increased Critical Hit Chance

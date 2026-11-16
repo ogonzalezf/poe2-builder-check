@@ -1,0 +1,26 @@
+Rarity: Unique
+Tyranny's Grip
+Runemastered Ironhead Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 374-506 (augmented)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.13 (augmented)
+--------
+Requires: Level 55, 31 Str, 76 Dex
+--------
+Sockets: S
+--------
+Item Level: 79
+--------
+Minions gain 10% of their Physical Damage as Extra Lightning Damage (rune)
+Bonded: Minions deal 20% increased Damage (rune)
+--------
+232% increased Physical Damage
+10% reduced Attack Speed
++19 to Strength
+Strikes deal Splash Damage
+Knocks Back Enemies on Hit
+Cannot use Projectile Attacks
+--------
+Corrupted

@@ -1,0 +1,15 @@
+Rarity: Unique
+Lavianga's Spirits
+Gargantuan Mana Flask
+--------
+Quality: +20% (augmented)
+Recovers 67 Mana every 2 Seconds
+Consumes 10 of 75 Charges on use
+Currently has 75 Charges
+--------
+Requires: Level 49
+--------
+Item Level: 79
+--------
+This Flask cannot be Used but applies its Effect constantly
+70% reduced Amount Recovered

@@ -1,0 +1,11 @@
+Rarity: Rare
+Gale Curio
+Sapphire
+--------
+Item Level: 80
+--------
+9% increased Cold Damage
+8% increased Chaos Damage
+Minions deal 14% increased Damage
+Minions have +7% to all Elemental Resistances
+Minions have 20% increased Critical Hit Chance

@@ -1,0 +1,10 @@
+Rarity: Rare
+Chimeric Shard
+Sapphire
+--------
+Item Level: 79
+--------
+12% increased Spell Damage
+Minions deal 13% increased Damage
+Minions have +10% to all Elemental Resistances
+Minions have 20% increased Critical Hit Chance

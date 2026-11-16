@@ -163,7 +163,7 @@ def buscar_grupo(item, cfg):
 
 def puntuar(item, cfg):
     grupo = buscar_grupo(item, cfg)
-    res = {"nota": None, "aportes": [], "sobran": [], "avisos": [], "consejo": ""}
+    res = {"nota": None, "puntos": 0.0, "aportes": [], "sobran": [], "avisos": [], "consejo": ""}
 
     # requisitos contra el personaje
     pj = cfg.get("personaje", {})
@@ -212,6 +212,7 @@ def puntuar(item, cfg):
                                  % (cfg["stats"][sid]["nombre"], nota))
             nota = min(nota, 4)
     res["nota"] = nota
+    res["puntos"] = min(1.0, suma / ideal) if nota > 4 or not grupo.get("obligatorios") else min(0.33, suma / ideal)
 
     # lineas ya contadas dentro de un valor calculado (resistencias, dano del arma)
     cubiertas = [r"^Recovers \d+ |^Consumes \d+ of|^Currently has \d+ Charges|^Lasts |^Used when "]   # propiedades de frascos y charms

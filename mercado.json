@@ -1,0 +1,40 @@
+{
+  "_nota": "Configuracion de la busqueda en el mercado. 'stats' traduce cada stat de pesos.json al texto con que aparece en el mercado: una lista de opciones, y se usa la primera opcion que el mercado reconozca; cada opcion es una lista de [texto, multiplicador]. 'grupos' dice que categoria buscar por slot y que archivos de equipo/ son la pieza que llevas puesta.",
+
+  "stats": {
+    "vida":            [[["# total maximum Life", 1]], [["# to maximum Life", 1]]],
+    "res_total":       [[["#% total Elemental Resistance", 1]],
+                        [["#% to Fire Resistance", 1], ["#% to Cold Resistance", 1], ["#% to Lightning Resistance", 1], ["#% to all Elemental Resistances", 3]]],
+    "res_caos":        [[["#% to Chaos Resistance", 1]]],
+    "velocidad":       [[["#% increased Movement Speed", 1]]],
+    "deflexion":       [[["Gain Deflection Rating equal to #% of Evasion Rating", 1]]],
+    "atributos":       [[["# to all Attributes", 1]]],
+    "atributo":        [[["# to Strength", 1], ["# to Dexterity", 1], ["# to Intelligence", 1], ["# to all Attributes", 1]]],
+    "nivel_minions":   [[["# to Level of all Minion Skills", 1]]],
+    "dano_minions":    [[["Minions deal #% increased Damage", 1]]],
+    "crit_minions":    [[["Minions have #% increased Critical Damage Bonus", 1]]],
+    "critprob_minions":[[["Minions have #% increased Critical Hit Chance", 1]]],
+    "vida_minions":    [[["Minions have #% increased maximum Life", 1]]],
+    "res_minions":     [[["Minions have #% to all Elemental Resistances", 1]]],
+    "vel_minions":     [[["Minions have #% increased Attack and Cast Speed", 1]], [["Minions have #% increased Attack Speed", 1]]],
+    "espiritu":        [[["# to Spirit", 1]]],
+    "espiritu_pct":    [[["#% increased Spirit", 1]]],
+    "aliados_dano":    [[["Allies in your Presence deal #% increased Damage", 1]]],
+    "aliados_crit":    [[["Allies in your Presence have #% increased Critical Damage Bonus", 1]]],
+    "aliados_vel":     [[["Allies in your Presence have #% increased Attack Speed", 1]]],
+    "fisico_pct":      [[["#% increased Physical Damage", 1]]]
+  },
+
+  "grupos": {
+    "anillo":         { "nombre": "Anillo",          "categoria": "accessory.ring",   "equipo": ["anillo1.txt", "anillo2.txt"] },
+    "amuleto":        { "nombre": "Amuleto",         "categoria": "accessory.amulet", "equipo": ["amuleto.txt"] },
+    "cinturon":       { "nombre": "Cinturon",        "categoria": "accessory.belt",   "equipo": ["cinturon.txt"] },
+    "casco":          { "nombre": "Casco",           "categoria": "armour.helmet",    "equipo": ["casco.txt"],   "ev_min": 400 },
+    "pechera":        { "nombre": "Pechera",         "categoria": "armour.chest",     "equipo": ["pechera.txt"], "ev_min": 1800 },
+    "guantes":        { "nombre": "Guantes",         "categoria": "armour.gloves",    "equipo": ["guantes.txt"], "ev_min": 300 },
+    "botas":          { "nombre": "Botas",           "categoria": "armour.boots",     "equipo": ["botas.txt"],   "ev_min": 350 },
+    "cetro":          { "nombre": "Cetro",           "categoria": "weapon.sceptre",   "equipo": ["cetro.txt"] },
+    "joyas":          { "nombre": "Joya",            "categoria": "jewel",            "equipo": ["joya1.txt", "joya2.txt", "joya3.txt"] },
+    "arma_principal": { "nombre": "Tyranny's Grip",  "nombre_unico": "Tyranny's Grip", "equipo": ["arma.txt"] }
+  }
+}

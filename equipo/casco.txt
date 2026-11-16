@@ -1,0 +1,22 @@
+Rarity: Rare
+Sol Veil
+Freebooter Cap
+--------
+Quality: +20% (augmented)
+Evasion Rating: 1021 (augmented)
+--------
+Requires: Level 80, 115 Dex
+--------
+Sockets: S
+--------
+Item Level: 84
+--------
+8% increased Reservation Efficiency of Minion Skills (rune)
+Bonded: Minions Revive 8% faster (rune)
+--------
++125 to Evasion Rating
+83% increased Evasion Rating
++161 to maximum Life
++2 to Level of all Minion Skills
++37% to Cold Resistance
++45% to Lightning Resistance

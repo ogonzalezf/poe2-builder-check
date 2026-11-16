@@ -1,0 +1,16 @@
+Rarity: Rare
+Entropy Hold
+Ruby Ring
+--------
+Requires: Level 65
+--------
+Item Level: 82
+--------
++25% to Fire Resistance (implicit)
+--------
+Adds 12 to 20 Cold damage to Attacks
+17% increased Cold Damage
++113 to maximum Life
++30 to Strength
++45% to Fire Resistance
++34% to Lightning Resistance

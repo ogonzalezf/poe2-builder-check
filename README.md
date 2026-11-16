@@ -13,6 +13,21 @@ La ventana se arrastra con el ratón y se cierra con clic derecho.
 
 Modo prueba, sin ventana: `python poe2_checker.py item.txt`
 
+## Buscar mejoras en el mercado
+
+`Mercado.bat` abre una ventana para buscar en el mercado oficial de PoE 2: eliges slot, presupuesto y moneda,
+y muestra los 5 mejores items que superan a la pieza que llevas puesta, con nota, precio y vendedor.
+El botón "Abrir en el navegador" lleva a la misma búsqueda en la web oficial para comprar.
+
+Por consola: `python mercado.py anillo 100` (slot y presupuesto en divines).
+
+- `equipo/`: el texto de cada pieza que llevas puesta. Cuando cambies una, sustituye su archivo.
+- `mercado.json`: categoría del mercado por slot y cómo se llama cada stat en el mercado.
+- `config.json` (se crea solo, no se sube al repositorio): liga, pausa entre consultas y, si el mercado
+  exige sesión, tu cookie `poesessid`.
+
+El mercado limita las consultas: cada búsqueda tarda unos segundos y no conviene lanzar muchas seguidas.
+
 ## Cómo puntúa
 
 Los pesos están en `pesos.json` y se releen en cada item. Ahora mismo corresponden al build

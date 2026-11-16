@@ -1,0 +1,16 @@
+Rarity: Rare
+Agony Grasp
+Sapphire Ring
+--------
+Requires: Level 60
+--------
+Item Level: 80
+--------
++24% to Cold Resistance (implicit)
+--------
+Adds 13 to 20 Fire damage to Attacks
+27% increased Chaos Damage
++24 to maximum Life
++12 to all Attributes
++27 to Dexterity
++29 to Intelligence

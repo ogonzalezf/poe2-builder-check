@@ -1,0 +1,15 @@
+Rarity: Magic
+Investigator's Thawing Charm of the Abundant
+--------
+Lasts 3.50 Seconds
+Consumes 40 of 62 Charges on use
+Currently has 62 Charges
+--------
+Requires: Level 49
+--------
+Item Level: 75
+--------
+Used when you become Frozen (implicit)
+--------
+18% increased Duration
+55% increased Charges

@@ -1,0 +1,24 @@
+Rarity: Rare
+Rift Sanctuary
+Slipstrike Vest
+--------
+Quality: +20% (augmented)
+Evasion Rating: 2574 (augmented)
+--------
+Requires: Level 70, 121 Dex
+--------
+Sockets: S S
+--------
+Item Level: 82
+--------
+12% increased Rarity of Items found (rune)
+10% increased Deflection Rating (rune)
+Bonded: +12% to Cold Resistance (rune)
+Bonded: 10% increased Quantity of Gold Dropped by Slain Enemies (rune)
+--------
++89 to Evasion Rating
+137% increased Evasion Rating
++43% to Fire Resistance
++44% to Lightning Resistance
+Gain Deflection Rating equal to 23% of Evasion Rating
++297 to Evasion Rating (desecrated)

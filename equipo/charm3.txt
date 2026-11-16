@@ -1,0 +1,16 @@
+Rarity: Unique
+Forsaken Bangle
+Amethyst Charm
+--------
+Lasts 4.80 Seconds
+Consumes 30 of 40 Charges on use
+Currently has 40 Charges
+--------
+Requires: Level 40
+--------
+Item Level: 81
+--------
+Used when you take Chaos damage from a Hit (implicit)
+--------
+19% increased Duration
+50% of Chaos damage you prevent when Hit Recouped as Life and Mana during effect

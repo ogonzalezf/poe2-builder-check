@@ -1,0 +1,15 @@
+Rarity: Magic
+Seething Ultimate Life Flask of the Perpetual
+--------
+Quality: +20% (augmented)
+Recovers 552 Life over 3 Seconds
+Consumes 10 of 75 Charges on use
+Currently has 75 Charges
+--------
+Requires: Level 60
+--------
+Item Level: 79
+--------
+50% reduced Amount Recovered
+Instant Recovery
+62% increased Charges gained

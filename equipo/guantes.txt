@@ -1,0 +1,22 @@
+Rarity: Rare
+Hate Clutches
+Polished Bracers
+--------
+Quality: +20% (augmented)
+Evasion Rating: 379 (augmented)
+--------
+Requires: Level 80, 101 Dex
+--------
+Sockets: S
+--------
+Item Level: 82
+--------
+8% increased Curse Magnitudes (rune)
+Bonded: Remnants you create have 15% increased effect (rune)
+--------
+86% increased Evasion Rating
+Adds 1 to 35 Lightning damage to Attacks
++118 to maximum Life
++44% to Fire Resistance
++43% to Cold Resistance
++35% to Lightning Resistance

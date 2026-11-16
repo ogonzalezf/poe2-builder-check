@@ -1,0 +1,25 @@
+Rarity: Rare
+Sorrow Chant
+Rattling Sceptre
+--------
+Quality: +2% (augmented)
+Spirit: 131 (augmented)
+--------
+Requires: Level 62
+--------
+Sockets: S
+--------
+Item Level: 80
+--------
+Allies in your Presence deal 40% increased Damage (rune)
+Bonded: 40% increased Damage while Shapeshifted (rune)
+--------
+Grants Skill: Level 17 Skeletal Warrior Minion
+--------
++122 to maximum Mana
+Allies in your Presence have 13% increased Attack Speed
+Allies in your Presence have 15% increased Cast Speed
++4 to Level of all Minion Skills
+31% increased Spirit (desecrated)
++35 to maximum Mana (desecrated)
+Allies in your Presence deal 92% increased Damage (crafted)

@@ -1,0 +1,17 @@
+Rarity: Rare
+Woe Strap
+Fine Belt
+--------
+Requires: Level 62
+--------
+Item Level: 80
+--------
+Has 2 Charm Slots (implicit)
+Flasks gain 0.17 charges per Second (implicit)
+--------
++116 to maximum Life
+21% increased Flask Life Recovery rate
++29 to Strength
+Minions have 42% increased Immobilisation buildup
+Minions Revive 9% faster
+Minions' Strikes have Melee Splash (crafted)

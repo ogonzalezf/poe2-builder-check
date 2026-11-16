@@ -1,0 +1,23 @@
+Rarity: Rare
+Ghoul Dash
+Runeforged Dragonscale Boots
+--------
+Quality: +20% (augmented)
+Evasion Rating: 490 (augmented)
+Runic Ward: 64 (augmented)
+--------
+Requires: Level 75, 101 Dex
+--------
+Sockets: S
+--------
+Item Level: 81
+--------
+15% chance when you gain an Endurance Charge to gain an additional Endurance Charge (rune)
+Bonded: +1 to Maximum Endurance Charges (rune)
+--------
+30% increased Movement Speed
+84% increased Evasion Rating
++127 to maximum Life
++35% to Fire Resistance
++39% to Cold Resistance
+Gain Deflection Rating equal to 22% of Evasion Rating

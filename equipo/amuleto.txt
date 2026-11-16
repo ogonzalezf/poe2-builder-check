@@ -1,0 +1,20 @@
+Rarity: Rare
+Vortex Gorget
+Stellar Amulet
+--------
+Quality (Minion Modifiers): +40% (augmented)
+--------
+Requires: Level 60
+--------
+Item Level: 81
+--------
+Allocates Zarokh's Gift (enchant)
+--------
++6 to all Attributes (implicit)
+--------
++121 to Accuracy Rating
++4 to Level of all Minion Skills
++12 to all Attributes
++32 to Intelligence
++41 to Spirit (desecrated)
++20% to Maximum Quality (crafted)
