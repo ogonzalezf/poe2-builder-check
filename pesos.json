@@ -34,7 +34,7 @@
   "grupos": {
     "arma_principal": {
       "nombres": ["Tyranny's Grip"],
-      "consejo": "Tyranny's Grip con el maximo de Physical Damage (150-200%).",
+      "consejo": "Tyranny's Grip con el maximo de Physical Damage (150-200% sin corromper).",
       "mods_para_10": 1,
       "pesos": { "fisico_pct": [10, 200, 150] }
     },

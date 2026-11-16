@@ -20,12 +20,32 @@ NUM = r"(\d+(?:\.\d+)?)"
 
 # ---------------------------------------------------------------- lectura
 def es_item(texto):
-    return bool(texto) and "Item Class:" in texto and SEP in texto
+    return bool(texto) and "Rarity:" in texto and SEP in texto
 
 
 def limpiar(linea):
     """Quita marcas como (implicit), (rune), (augmented) para mostrar."""
     return re.sub(r"\s*\((implicit|rune|augmented|enchant|fractured|desecrated|unmet)\)", "", linea).strip()
+
+
+CLASES_POR_BASE = [
+    ("Spears", ["Spear"]), ("Sceptres", ["Sceptre"]), ("Rings", ["Ring"]), ("Amulets", ["Amulet"]),
+    ("Belts", ["Belt", "Sash"]),
+    ("Gloves", ["Gloves", "Gauntlets", "Mitts", "Bracers", "Wraps"]),
+    ("Boots", ["Boots", "Greaves", "Sandals", "Shoes", "Slippers", "Sabatons", "Leggings"]),
+    ("Helmets", ["Helm", "Greathelm", "Hood", "Cap", "Crown", "Circlet", "Mask", "Tiara", "Visage", "Coif"]),
+    ("Body Armours", ["Vest", "Robe", "Coat", "Armour", "Jacket", "Garb", "Plate", "Mail", "Raiment",
+                      "Cuirass", "Hauberk", "Brigandine", "Wyrmscale"]),
+]
+
+
+def clase_por_base(base):
+    """Si el texto no trae 'Item Class:', deduce la clase por el nombre de la base."""
+    palabras = base.split()
+    for clase, claves in CLASES_POR_BASE:
+        if any(c in palabras for c in claves):
+            return clase
+    return "?"
 
 
 def parse_item(texto):
@@ -47,9 +67,11 @@ def parse_item(texto):
             item["rareza"] = l.split(":", 1)[1].strip()
         else:
             nombre.append(l)
-    if not item["clase"]:
+    if not item["rareza"]:
         return None
     item["nombre"] = " / ".join(nombre)
+    if not item["clase"]:
+        item["clase"] = clase_por_base(nombre[-1] if nombre else "")
     item["lineas"].append("Base: " + item["nombre"])
 
     for sec in secciones[1:]:
@@ -190,6 +212,8 @@ def puntuar(item, cfg):
         cubiertas.append(r"^Adds \d+ to \d+ \w+ Damage|increased Physical Damage|increased Attack Speed")
     res["sobran"] = [limpiar(l) for l in item["mods"]
                      if l not in usadas and not any(re.search(c, l) for c in cubiertas)]
+    if grupo.get("nombres"):      # en un unico los demas mods son fijos: no son "sobrantes"
+        res["sobran"] = []
     return res
 
 
