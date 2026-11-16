@@ -97,6 +97,12 @@
       "mods_para_10": 2,
       "pesos": { "lavianga_roll": [8, 70, 80], "frasco_menos_cargas": 2 }
     },
+    "forsaken_bangle": {
+      "nombres": ["Forsaken Bangle"],
+      "consejo": "Es el charm unico que pide la guia. Solo varia la duracion (15-25%).",
+      "mods_para_10": 2,
+      "pesos": { "charm_tipo": 7, "charm_duracion": [3, 25, 15] }
+    },
     "charms": {
       "clases": ["Charms"],
       "consejo": "Charms de la guia: anti-slow (Silver), anti-congelacion (Thawing) y el unico Forsaken Bangle.",
