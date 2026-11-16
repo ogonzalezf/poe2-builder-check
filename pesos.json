@@ -28,6 +28,8 @@
     "aliados_vel":   { "nombre": "Vel. de ataque de aliados", "patron": "Allies in your Presence have (\\d+)% increased Attack Speed", "bueno": 16 },
     "base_rattling": { "nombre": "Base Rattling Sceptre",    "patron": "^Base: .*Rattling Sceptre",                    "bueno": 1 },
     "base_prismatic":{ "nombre": "Base Prismatic Ring",      "patron": "^Base: .*Prismatic Ring",                      "bueno": 1 },
+    "espiritu":      { "nombre": "Espiritu",                 "patron": "\\+(\\d+) to Spirit",                         "bueno": 50 },
+    "anoint":        { "nombre": "Anoint Growing Swarm",     "patron": "Allocates Growing Swarm",                      "bueno": 1 },
     "fisico_pct":    { "nombre": "Dano fisico % del arma",   "patron": "(\\d+)% increased Physical Damage",            "bueno": 200 }
   },
 
@@ -48,7 +50,7 @@
       "clases": ["Amulets"],
       "consejo": "+3 Minion Skills, 70 vida, +28 a todos los atributos, 35% resistencia. Anoint: Growing Swarm.",
       "mods_para_10": 4,
-      "pesos": { "nivel_minions": [10, 3], "vida": [8, 70], "atributos": [6, 28], "res_total": [5, 35], "res_caos": 2 }
+      "pesos": { "nivel_minions": [10, 3], "vida": [8, 70], "atributos": [6, 28], "espiritu": [6, 50], "res_total": [5, 35], "anoint": 3, "res_caos": 2 }
     },
     "casco": {
       "clases": ["Helmets"],
