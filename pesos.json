@@ -1,56 +1,91 @@
 {
-  "_nota": "PESOS DE EJEMPLO (build generico de vida + resistencias). Se reemplazan por los de tu build. 'bueno' = valor a partir del cual el stat cuenta al 100%. 'peso' = importancia para el build. La nota 10 se alcanza con 'mods_para_10' stats importantes en su valor bueno.",
+  "_build": "06_Huntress_Spirit Walker_Mono_End Game [Nicro4Fun]",
+  "_nota": "Pesos sacados del .build. En cada grupo, cada stat es: peso | [peso, bueno] | [peso, bueno, minimo]. 'bueno' es el valor que pide la guia para ese slot: con ese valor el stat cuenta al 100%. La nota 10 se alcanza con 'mods_para_10' stats importantes en su valor bueno.",
 
   "mods_para_10": 4,
 
   "personaje": { "Level": 100, "Str": 999, "Dex": 999, "Int": 999 },
 
   "stats": {
-    "vida":        { "nombre": "Vida maxima",            "patron": "\\+(\\d+) to maximum Life",            "bueno": 150 },
-    "mana":        { "nombre": "Mana maximo",            "patron": "\\+(\\d+) to maximum Mana",            "bueno": 120 },
-    "es_plano":    { "nombre": "Escudo de energia +",    "patron": "\\+(\\d+) to maximum Energy Shield",   "bueno": 80 },
-    "espiritu":    { "nombre": "Espiritu",               "patron": "\\+(\\d+) to Spirit",                  "bueno": 50 },
-    "res_total":   { "nombre": "Resist. elemental total", "derivado": "res_total",                          "bueno": 90 },
-    "res_caos":    { "nombre": "Resist. al caos",        "patron": "\\+(\\d+)% to Chaos Resistance",       "bueno": 25 },
-    "velocidad":   { "nombre": "Velocidad de movimiento", "patron": "(\\d+)% increased Movement Speed",     "bueno": 30 },
-    "fuerza":      { "nombre": "Fuerza",                 "patron": "\\+(\\d+) to (?:Strength|all Attributes)",     "bueno": 30 },
-    "destreza":    { "nombre": "Destreza",               "patron": "\\+(\\d+) to (?:Dexterity|all Attributes)",    "bueno": 30 },
-    "inteligencia":{ "nombre": "Inteligencia",           "patron": "\\+(\\d+) to (?:Intelligence|all Attributes)", "bueno": 30 },
-    "rareza":      { "nombre": "Rareza de objetos",      "patron": "(\\d+)% increased Rarity of Items found", "bueno": 25 },
-    "armadura":    { "nombre": "Armadura (base)",        "patron": "^Armour: (\\d+)",                      "bueno": 800 },
-    "evasion":     { "nombre": "Evasion (base)",         "patron": "^Evasion Rating: (\\d+)",              "bueno": 800 },
-    "es_base":     { "nombre": "Escudo de energia (base)", "patron": "^Energy Shield: (\\d+)",              "bueno": 300 },
-    "pdps":        { "nombre": "DPS fisico",             "derivado": "pdps",                               "bueno": 400 },
-    "edps":        { "nombre": "DPS elemental",          "derivado": "edps",                               "bueno": 300 },
-    "vel_ataque":  { "nombre": "Velocidad de ataque",    "patron": "(\\d+)% increased Attack Speed",       "bueno": 12 },
-    "vel_lanzar":  { "nombre": "Velocidad de lanzamiento", "patron": "(\\d+)% increased Cast Speed",        "bueno": 25 },
-    "dano_hechizo":{ "nombre": "Dano de hechizos %",     "patron": "(\\d+)% increased Spell Damage",       "bueno": 100 },
-    "nivel_hechizos": { "nombre": "+Nivel de hechizos",  "patron": "\\+(\\d+) to Level of all (?:\\w+ )?Spell Skills", "bueno": 4 },
-    "nivel_ataques":  { "nombre": "+Nivel de ataques",   "patron": "\\+(\\d+) to Level of all (?:Melee|Projectile|Attack) Skills", "bueno": 4 },
-    "critico":     { "nombre": "Prob. de critico",       "patron": "(\\d+(?:\\.\\d+)?)% (?:increased|to) Critical Hit Chance", "bueno": 30 },
-    "dano_critico":{ "nombre": "Dano critico",           "patron": "(\\d+)% increased Critical Damage Bonus", "bueno": 30 }
+    "vida":          { "nombre": "Vida maxima",              "patron": "\\+(\\d+) to maximum Life",                    "bueno": 120 },
+    "res_total":     { "nombre": "Resist. elemental total",  "derivado": "res_total",                                  "bueno": 75 },
+    "res_caos":      { "nombre": "Resist. al caos",          "patron": "\\+(\\d+)% to Chaos Resistance",               "bueno": 25 },
+    "evasion":       { "nombre": "Evasion (base)",           "patron": "^Evasion Rating: (\\d+)",                      "bueno": 500 },
+    "velocidad":     { "nombre": "Velocidad de movimiento",  "patron": "(\\d+)% increased Movement Speed",             "bueno": 30 },
+    "deflexion":     { "nombre": "Deflexion % de evasion",   "patron": "Gain Deflection Rating equal to (\\d+)% of Evasion Rating", "bueno": 23 },
+    "runic_ward":    { "nombre": "Runic Ward (Runeforged)",  "patron": "Runic Ward: (\\d+)|\\+?(\\d+)%? (?:to|increased) (?:maximum )?Runic Ward", "bueno": 20 },
+    "atributos":     { "nombre": "Todos los atributos",      "patron": "\\+(\\d+) to all Attributes",                  "bueno": 28 },
+    "atributo":      { "nombre": "Algun atributo",           "patron": "\\+(\\d+) to (?:Strength|Dexterity|Intelligence|all Attributes)", "bueno": 20 },
+    "nivel_minions": { "nombre": "+Nivel de Minion Skills",  "patron": "\\+(\\d+) to Level of all Minion Skills",      "bueno": 3 },
+    "dano_minions":  { "nombre": "Dano de minions %",        "patron": "Minions deal (\\d+)% increased Damage",        "bueno": 30 },
+    "crit_minions":  { "nombre": "Dano critico de minions",  "patron": "Minions have (\\d+)% increased Critical Damage Bonus", "bueno": 29 },
+    "vida_minions":  { "nombre": "Vida de minions %",        "patron": "Minions have (\\d+)% increased maximum Life",  "bueno": 30 },
+    "splash":        { "nombre": "Melee Splash de minions",  "patron": "Strikes have Melee Splash",                    "bueno": 1 },
+    "charm_slots":   { "nombre": "Ranuras de charm",         "patron": "Charm Slots?: (\\d+)",                         "bueno": 2 },
+    "espiritu_pct":  { "nombre": "Espiritu %",               "patron": "(\\d+)% increased Spirit",                     "bueno": 28 },
+    "aliados_dano":  { "nombre": "Dano de aliados %",        "patron": "Allies in your Presence deal (\\d+)% increased Damage", "bueno": 119 },
+    "aliados_crit":  { "nombre": "Dano critico de aliados",  "patron": "Allies in your Presence have (\\d+)% increased Critical Damage Bonus", "bueno": 39 },
+    "aliados_vel":   { "nombre": "Vel. de ataque de aliados", "patron": "Allies in your Presence have (\\d+)% increased Attack Speed", "bueno": 16 },
+    "base_rattling": { "nombre": "Base Rattling Sceptre",    "patron": "^Base: .*Rattling Sceptre",                    "bueno": 1 },
+    "base_prismatic":{ "nombre": "Base Prismatic Ring",      "patron": "^Base: .*Prismatic Ring",                      "bueno": 1 },
+    "fisico_pct":    { "nombre": "Dano fisico % del arma",   "patron": "(\\d+)% increased Physical Damage",            "bueno": 200 }
   },
 
   "grupos": {
-    "armadura": {
-      "clases": ["Body Armours", "Helmets", "Gloves", "Shields", "Bucklers", "Foci"],
-      "pesos": { "vida": 10, "res_total": 8, "res_caos": 4, "armadura": 5, "evasion": 5, "es_base": 5, "espiritu": 6, "fuerza": 2, "destreza": 2, "inteligencia": 2, "rareza": 3, "vel_ataque": 4 }
+    "arma_principal": {
+      "nombres": ["Tyranny's Grip"],
+      "consejo": "Tyranny's Grip con el maximo de Physical Damage (150-200%).",
+      "mods_para_10": 1,
+      "pesos": { "fisico_pct": [10, 200, 150] }
+    },
+    "cetro": {
+      "clases": ["Sceptres"],
+      "consejo": "Rattling Sceptre: 28% Spirit, aliados 119% dano, 39% crit, 16% vel. ataque, +4 Minion Skills.",
+      "mods_para_10": 5,
+      "pesos": { "nivel_minions": [10, 4], "aliados_dano": 10, "espiritu_pct": 9, "aliados_crit": 6, "aliados_vel": 6, "base_rattling": 4 }
+    },
+    "amuleto": {
+      "clases": ["Amulets"],
+      "consejo": "+3 Minion Skills, 70 vida, +28 a todos los atributos, 35% resistencia. Anoint: Growing Swarm.",
+      "mods_para_10": 4,
+      "pesos": { "nivel_minions": [10, 3], "vida": [8, 70], "atributos": [6, 28], "res_total": [5, 35], "res_caos": 2 }
+    },
+    "casco": {
+      "clases": ["Helmets"],
+      "consejo": "+2 Minion Skills, 117 vida, mas de 500 de evasion.",
+      "mods_para_10": 3,
+      "pesos": { "nivel_minions": [10, 2], "vida": [9, 117], "evasion": [7, 500], "res_total": [3, 30], "res_caos": 2 }
+    },
+    "pechera": {
+      "clases": ["Body Armours"],
+      "consejo": "Mas de 2500 de evasion y, si se puede, alguna resistencia.",
+      "mods_para_10": 2,
+      "pesos": { "evasion": [10, 2500], "res_total": [5, 40], "vida": [4, 120], "res_caos": 2 }
+    },
+    "guantes": {
+      "clases": ["Gloves"],
+      "consejo": "Tienen que ser Runeforged con 20+ de Runic Ward. 500 evasion, 149 vida, 25% a cada resistencia.",
+      "mods_para_10": 4,
+      "obligatorios": ["runic_ward"],
+      "pesos": { "vida": [9, 149], "res_total": [9, 75], "runic_ward": [8, 20], "evasion": [6, 500], "res_caos": 2 }
     },
     "botas": {
       "clases": ["Boots"],
-      "pesos": { "velocidad": 10, "vida": 9, "res_total": 8, "res_caos": 4, "armadura": 3, "evasion": 3, "es_base": 3, "rareza": 3 }
+      "consejo": "30% velocidad, 500+ evasion, 149 vida, 45% frio, 45% rayo, 23% deflexion.",
+      "mods_para_10": 5,
+      "pesos": { "velocidad": [10, 30], "vida": [8, 149], "res_total": [8, 90], "deflexion": [7, 23], "evasion": [5, 500], "res_caos": 2 }
     },
-    "joyeria": {
-      "clases": ["Rings", "Amulets", "Belts"],
-      "pesos": { "vida": 10, "res_total": 8, "res_caos": 5, "espiritu": 7, "mana": 3, "fuerza": 3, "destreza": 3, "inteligencia": 3, "rareza": 4, "nivel_hechizos": 6, "nivel_ataques": 6, "critico": 4, "dano_critico": 4 }
+    "anillo": {
+      "clases": ["Rings"],
+      "consejo": "119 vida, 15% a todas las resistencias, 30% dano de minions, +10 atributos. Base Prismatic o con mucha resistencia.",
+      "mods_para_10": 4,
+      "pesos": { "vida": [9, 119], "res_total": [9, 45], "dano_minions": [8, 30], "atributos": [4, 10], "crit_minions": [4, 29], "base_prismatic": 2, "res_caos": 2 }
     },
-    "arma_ataque": {
-      "clases": ["One Hand Maces", "Two Hand Maces", "Quarterstaves", "Bows", "Crossbows", "Spears", "One Hand Swords", "Two Hand Swords", "One Hand Axes", "Two Hand Axes", "Daggers", "Claws", "Flails"],
-      "pesos": { "pdps": 10, "edps": 8, "nivel_ataques": 7, "vel_ataque": 4, "critico": 4, "dano_critico": 3 }
-    },
-    "arma_hechizo": {
-      "clases": ["Wands", "Staves", "Sceptres"],
-      "pesos": { "dano_hechizo": 10, "nivel_hechizos": 10, "vel_lanzar": 6, "critico": 5, "dano_critico": 4, "mana": 3, "espiritu": 6 }
+    "cinturon": {
+      "clases": ["Belts"],
+      "consejo": "2+ ranuras de charm, 120 vida, Melee Splash de minions, 30% vida de minions, +1 Minion Skills, algun atributo.",
+      "mods_para_10": 5,
+      "pesos": { "vida": [9, 120], "splash": 9, "charm_slots": [8, 2], "vida_minions": [7, 30], "nivel_minions": [6, 1], "atributo": [3, 20] }
     }
   }
 }

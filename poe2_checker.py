@@ -50,6 +50,7 @@ def parse_item(texto):
     if not item["clase"]:
         return None
     item["nombre"] = " / ".join(nombre)
+    item["lineas"].append("Base: " + item["nombre"])
 
     for sec in secciones[1:]:
         if sec[0].startswith(("Requirements", "Requires")):
@@ -118,13 +119,20 @@ def valor_stat(stat, item):
     return total, usadas
 
 
+def buscar_grupo(item, cfg):
+    """Primero los grupos que piden un nombre concreto (unicos), luego por clase."""
+    for g in cfg["grupos"].values():
+        if any(n.lower() in item["nombre"].lower() for n in g.get("nombres", [])):
+            return g
+    for g in cfg["grupos"].values():
+        if not g.get("nombres") and item["clase"] in g.get("clases", []):
+            return g
+    return None
+
+
 def puntuar(item, cfg):
-    grupo = None
-    for nombre, g in cfg["grupos"].items():
-        if item["clase"] in g["clases"]:
-            grupo = g
-            break
-    res = {"nota": None, "aportes": [], "sobran": [], "avisos": [], "grupo": None}
+    grupo = buscar_grupo(item, cfg)
+    res = {"nota": None, "aportes": [], "sobran": [], "avisos": [], "consejo": ""}
 
     # requisitos contra el personaje
     pj = cfg.get("personaje", {})
@@ -133,26 +141,46 @@ def puntuar(item, cfg):
             res["avisos"].append("Requiere %s %d (tienes %d)" % (etiqueta, item["req"][clave], pj[clave]))
 
     if grupo is None:
-        res["avisos"].append("Sin reglas para la clase '%s'" % item["clase"])
+        res["avisos"].append("El build no tiene reglas para '%s'" % item["clase"])
         return res
+    res["consejo"] = grupo.get("consejo", "")
 
     usadas = set()
     suma = 0.0
-    for sid, peso in grupo["pesos"].items():
+    pesos = []
+    valores = {}
+    for sid, regla in grupo["pesos"].items():
+        # regla: peso  |  [peso, bueno]  |  [peso, bueno, minimo]
         stat = cfg["stats"][sid]
+        if isinstance(regla, list):
+            peso = regla[0]
+            bueno = regla[1] if len(regla) > 1 else stat["bueno"]
+            minimo = regla[2] if len(regla) > 2 else 0
+        else:
+            peso, bueno, minimo = regla, stat["bueno"], 0
+        pesos.append(peso)
         valor, lineas = valor_stat(stat, item)
+        valores[sid] = valor
         usadas.update(lineas)
         if valor <= 0:
             continue
-        frac = min(valor / float(stat["bueno"]), 1.0)
+        frac = max(0.0, min((valor - minimo) / float(bueno - minimo), 1.0))
         aporte = peso * frac
         suma += aporte
         res["aportes"].append((aporte, stat["nombre"], valor, frac))
     res["aportes"].sort(reverse=True)
 
-    n = cfg.get("mods_para_10", 4)
-    ideal = sum(sorted(grupo["pesos"].values(), reverse=True)[:n]) or 1.0
-    res["nota"] = int(round(1 + 9 * min(1.0, suma / ideal)))
+    n = grupo.get("mods_para_10", cfg.get("mods_para_10", 4))
+    ideal = sum(sorted(pesos, reverse=True)[:n]) or 1.0
+    nota = int(round(1 + 9 * min(1.0, suma / ideal)))
+
+    # stats imprescindibles: si faltan, la nota no pasa de 4
+    for sid in grupo.get("obligatorios", []):
+        if valores.get(sid, 0) <= 0:
+            res["avisos"].append("Falta imprescindible: " + cfg["stats"][sid]["nombre"])
+            nota = min(nota, 4)
+    res["nota"] = nota
+
     # lineas ya contadas dentro de un valor calculado (resistencias, dano del arma)
     cubiertas = []
     derivs = {cfg["stats"][s].get("derivado") for s in grupo["pesos"]}
@@ -188,6 +216,8 @@ def como_texto(item, res):
         out.append("  + %-28s %7.0f  (%3d%% de lo bueno)" % (nombre, valor, frac * 100))
     for l in res["sobran"][:6]:
         out.append("  - " + l)
+    if res["consejo"]:
+        out.append("  Build: " + res["consejo"])
     return "\n".join(out)
 
 
@@ -264,6 +294,8 @@ def main_ventana():
                         filas.append(("+ %s: %.0f  (%d%%)" % (nombre, valor, frac * 100), "#86efac", 9, False))
                     for l in res["sobran"][:6]:
                         filas.append(("- " + l, "#6b7280", 9, False))
+                    if res["consejo"]:
+                        filas.append(("Build: " + res["consejo"], "#93c5fd", 8, False))
                     pintar(filas)
                 except Exception as e:
                     pintar([("Error", "#f87171", 12, True), (str(e), "#e5e5e5", 9, False)])

@@ -15,11 +15,15 @@ Modo prueba, sin ventana: `python poe2_checker.py item.txt`
 
 ## Cómo puntúa
 
-Los pesos del build están en `pesos.json` y se releen en cada item:
+Los pesos están en `pesos.json` y se releen en cada item. Ahora mismo corresponden al build
+"Huntress Spirit Walker Mono End Game" de Nicro4Fun.
 
-- `stats`: cada stat tiene un `patron` (regex sobre el texto del item) o un valor `derivado` (`pdps`, `edps`, `res_total`), y un valor `bueno` a partir del cual cuenta al 100%.
-- `grupos`: qué clases de item pertenecen a cada grupo y el `peso` de cada stat en él.
-- `mods_para_10`: cuántos de los stats más importantes, en su valor bueno, hacen falta para un 10.
+- `stats`: cada stat tiene un `patron` (regex sobre el texto del item) o un valor `derivado` (`pdps`, `edps`, `res_total`), y un valor `bueno` por defecto.
+- `grupos`: un grupo por slot. Se elige por `clases` (clase del item) o por `nombres` (un único concreto).
+  - `pesos`: por stat, `peso`, `[peso, bueno]` o `[peso, bueno, minimo]`. `bueno` es el valor que pide la guía para ese slot.
+  - `mods_para_10`: cuántos de los stats más importantes, en su valor bueno, hacen falta para un 10.
+  - `obligatorios`: stats sin los cuales la nota no pasa de 4.
+  - `consejo`: lo que pide la guía para ese slot; se muestra bajo la nota.
 - `personaje`: nivel y atributos, para avisar de requisitos que no cumples.
 
 El programa solo lee el portapapeles; no toca la memoria del juego. Por ahora reconoce el cliente en inglés.
