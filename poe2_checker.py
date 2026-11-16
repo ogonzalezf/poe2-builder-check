@@ -47,6 +47,8 @@ def clase_por_base(base):
         if clase in base:
             return clase + "s"
     palabras = base.split()
+    if palabras and palabras[-1] in ("Sapphire", "Ruby", "Emerald", "Diamond"):
+        return "Jewels"
     for clase, claves in CLASES_POR_BASE:
         if any(c in palabras for c in claves):
             return clase
@@ -115,6 +117,8 @@ def derivados(lineas):
                 fisico += total
             else:
                 elemental += total
+        if l.startswith(("Minions", "Allies", "Companions")):
+            continue                     # resistencias de los minions, no tuyas
         m = re.search(r"\+" + NUM + r"% to (Fire|Cold|Lightning) Resistance", l)
         if m:
             res += float(m.group(1))
