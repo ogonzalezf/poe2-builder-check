@@ -77,16 +77,15 @@
     },
     "guantes": {
       "clases": ["Gloves"],
-      "consejo": "Tienen que ser Runeforged con 20+ de Runic Ward. 500 evasion, 149 vida, 25% a cada resistencia.",
-      "mods_para_10": 4,
-      "obligatorios": ["runic_ward"],
-      "pesos": { "vida": [9, 149], "res_total": [9, 75], "runic_ward": [8, 20], "evasion": [6, 500], "res_caos": 2 }
+      "consejo": "500 evasion, 149 vida, 25% a cada resistencia. El Runic Ward (20+) ya lo cubren las botas; aqui es un extra.",
+      "mods_para_10": 3,
+      "pesos": { "vida": [9, 149], "res_total": [9, 75], "evasion": [6, 500], "runic_ward": [3, 20], "res_caos": 2 }
     },
     "botas": {
       "clases": ["Boots"],
-      "consejo": "30% velocidad, 500+ evasion, 149 vida, 45% frio, 45% rayo, 23% deflexion.",
+      "consejo": "30% velocidad, 500+ evasion, 149 vida, 45% frio, 45% rayo, 23% deflexion. Aqui va el Runic Ward del build (20+).",
       "mods_para_10": 5,
-      "pesos": { "velocidad": [10, 30], "vida": [8, 149], "res_total": [8, 90], "deflexion": [7, 23], "evasion": [5, 500], "res_caos": 2 }
+      "pesos": { "velocidad": [10, 30], "vida": [8, 149], "res_total": [8, 90], "deflexion": [7, 23], "evasion": [5, 500], "runic_ward": [3, 20], "res_caos": 2 }
     },
     "anillo": {
       "clases": ["Rings"],

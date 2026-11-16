@@ -15,7 +15,7 @@ Las reglas de puntuación que salen de este perfil están en `pesos.json`.
 | Amuleto | +3 Minion Skills, +70 vida, +28 all Attributes, +35% resist. fuego. Anoint: Growing Swarm |
 | Casco | 500+ evasión, +117 vida, +2 Minion Skills |
 | Pechera | 2500+ evasión y, si se puede, alguna resistencia |
-| Guantes | Runeforged con 20+ Runic Ward (imprescindible), 500 evasión, +149 vida, 25% a cada resistencia |
+| Guantes | 500 evasión, +149 vida, 25% a cada resistencia. La guía los pide Runeforged con 20+ Runic Ward, pero ese Runic Ward lo cubren las botas |
 | Botas | 30% velocidad, 500+ evasión, +149 vida, 45% frío, 45% rayo, deflexión 23% de la evasión |
 | Anillos (x2) | Prismatic Ring o base con mucha resistencia: +119 vida, +10 all Attributes, +15% all res, minions 30% daño, minions 29% daño crítico (opcional) |
 | Cinturón | 2+ ranuras de charm, +120 vida, +1 Minion Skills (opcional), minions 30% vida, algún atributo, Minions' Strikes have Melee Splash |
@@ -38,6 +38,7 @@ Las reglas de puntuación que salen de este perfil están en `pesos.json`.
 | Arma 2 | Sorrow Chant, Rattling Sceptre: +4 Minion Skills, 132% daño aliados, 31% Spirit, 13% vel. ataque | 9 | Daño crítico de aliados |
 | Botas | Ghoul Dash, Runeforged Dragonscale Boots: 30% vel., 127 vida, 74% res, 22% deflexión, 64 Runic Ward | 9 | Algo de vida y resistencia |
 | Charm | Thawing Charm: 18% duración, 55% cargas | 9 | |
+| Guantes | Hate Clutches, Polished Bracers: 118 vida, 122% res, 379 evasión | 9 | Algo de vida y evasión |
 | Frasco maná | Lavianga's Spirits, 70% reduced (mejor tirada) | 8 | No es el tipo que pide la guía |
 | Charm | Forsaken Bangle, 19% duración (rango 15-25%) | 8 | Tirada de duración |
 | Joyas (x3) | Sapphires con 13-15% daño de minions, 19-20% crítico de minions, 5-10% res de minions | 8 | Un mod inútil en cada una |
@@ -46,13 +47,15 @@ Las reglas de puntuación que salen de este perfil están en `pesos.json`.
 | Anillo | Entropy Hold, Ruby Ring: 113 vida, 104% res | 6 | Daño de minions, atributos |
 | Frasco vida | Seething Ultimate Life Flask of the Perpetual | 5 | Prefijo y sufijo distintos a los de la guía |
 | Anillo | Agony Grasp, Sapphire Ring: 24 vida, 24% res, +12 atributos | 4 | Vida, resistencias, daño de minions |
-| Guantes | Hate Clutches, Polished Bracers: 118 vida, 122% res, 379 evasión | 4 (7 sin el tope) | No son Runeforged, sin Runic Ward |
 
-**Prioridad de mejora:** los dos anillos (sobre todo el Sapphire) y los guantes.
+**Prioridad de mejora:** los dos anillos (sobre todo el Sapphire) y después el amuleto.
+
+## Decisiones
+
+- El Runic Ward del build lo aportan las botas (64). En guantes y botas cuenta solo como extra, sin tope de nota.
 
 ## Pendiente
 
-- Saber si el Runic Ward tiene que estar en los guantes o vale el de las botas (64). De eso depende si los guantes son un 4 o un 7.
 - Probar la ventana flotante en el PC y el texto copiado con Ctrl+C dentro del juego (hasta ahora todo se probó con texto de poe.ninja).
 - El programa solo reconoce el cliente en inglés.
 - Los valores "buenos" de frascos, charms y joyas son estimaciones, no rangos reales del juego.
