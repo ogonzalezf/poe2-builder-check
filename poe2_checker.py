@@ -87,7 +87,7 @@ def parse_item(texto):
             continue
         for l in sec:
             item["lineas"].append(l)
-            if not re.match(r"^[A-Za-z' ]+:", l):  # las propiedades llevan "Clave: valor"
+            if not re.match(r"^[A-Za-z'() ]+:", l):  # las propiedades llevan "Clave: valor"
                 item["mods"].append(l)
 
     item["derivados"] = derivados(item["lineas"])
