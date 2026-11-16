@@ -199,7 +199,8 @@ def puntuar(item, cfg):
     # stats imprescindibles: si faltan, la nota no pasa de 4
     for sid in grupo.get("obligatorios", []):
         if valores.get(sid, 0) <= 0:
-            res["avisos"].append("Falta imprescindible: " + cfg["stats"][sid]["nombre"])
+            res["avisos"].append("Falta imprescindible: %s (sin ese tope seria un %d)"
+                                 % (cfg["stats"][sid]["nombre"], nota))
             nota = min(nota, 4)
     res["nota"] = nota
 
