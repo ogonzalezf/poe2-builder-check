@@ -33,7 +33,7 @@ CONFIG_DEFECTO = {
     "poesessid": "",
     "estado": "any",
     "pausa_segundos": 2.5,
-    "items_a_revisar": 30,
+    "items_a_revisar": 10,
     "mostrar": 5,
     "user_agent": "poe2-builder-check/0.1 (github.com/ogonzalezf/poe2-builder-check)"
 }
@@ -210,6 +210,20 @@ def construir_consulta(grupo_id, precio_max, moneda, cfg, mer, pesos, indice, ma
 
 
 # ---------------------------------------------------------------- resultados
+def texto_mod(m):
+    """Un mod del mercado puede venir como texto o como objeto; devuelve siempre texto."""
+    if isinstance(m, str):
+        return quitar_marcas(m)
+    if isinstance(m, dict):
+        for clave in ("description", "text", "name", "mod"):
+            if isinstance(m.get(clave), str):
+                return quitar_marcas(m[clave])
+        return quitar_marcas(" ".join(str(v) for v in m.values() if isinstance(v, (str, int, float))))
+    if isinstance(m, (list, tuple)):
+        return " ".join(texto_mod(x) for x in m)
+    return str(m)
+
+
 def item_a_texto(it, clase):
     """Convierte un item del mercado al mismo formato de texto que copia el juego."""
     L = ["Item Class: " + clase, "Rarity: " + it.get("rarity", "Rare")]
@@ -218,18 +232,20 @@ def item_a_texto(it, clase):
     L.append(it.get("typeLine") or it.get("baseType") or "?")
     props = []
     for p in it.get("properties", []) or []:
+        if not isinstance(p, dict):
+            continue
         vals = p.get("values") or []
-        if vals:
-            props.append("%s: %s" % (quitar_marcas(p["name"]), vals[0][0]))
+        if vals and isinstance(vals[0], (list, tuple)) and vals[0]:
+            props.append("%s: %s" % (texto_mod(p.get("name", "")), vals[0][0]))
     if props:
         L += [motor.SEP] + props
     for campo, marca in (("enchantMods", " (enchant)"), ("implicitMods", " (implicit)"), ("runeMods", " (rune)")):
         mods = it.get(campo) or []
         if mods:
-            L += [motor.SEP] + [quitar_marcas(m) + marca for m in mods]
+            L += [motor.SEP] + [texto_mod(m) + marca for m in mods]
     explicitos = []
     for campo in ("explicitMods", "fracturedMods", "desecratedMods", "craftedMods"):
-        explicitos += [quitar_marcas(m) for m in (it.get(campo) or [])]
+        explicitos += [texto_mod(m) for m in (it.get(campo) or [])]
     if explicitos:
         L += [motor.SEP] + explicitos
     if it.get("corrupted"):
@@ -289,10 +305,14 @@ def buscar(grupo_id, precio_max, moneda="divine", log=lambda m: None):
         for x in lote.get("result", []):
             if not x or not x.get("item"):
                 continue
-            item = motor.parse_item(item_a_texto(x["item"], clase))
+            try:
+                item = motor.parse_item(item_a_texto(x["item"], clase))
+                res = motor.puntuar(item, pesos) if item else None
+            except Exception as e:           # un item con formato inesperado no debe tumbar la busqueda
+                out["avisos"].append("No se pudo leer un item (%s: %s)" % (type(e).__name__, e))
+                continue
             if not item:
                 continue
-            res = motor.puntuar(item, pesos)
             precio = (x.get("listing") or {}).get("price") or {}
             out["resultados"].append({
                 "nombre": item["nombre"], "nota": res["nota"], "puntos": res["puntos"],
