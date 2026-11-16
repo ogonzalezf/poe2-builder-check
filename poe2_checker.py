@@ -19,8 +19,40 @@ NUM = r"(\d+(?:\.\d+)?)"
 
 
 # ---------------------------------------------------------------- lectura
+CATEGORIAS_WEB = {
+    "Ring": "Rings", "Amulet": "Amulets", "Belt": "Belts", "Helmet": "Helmets", "Body Armour": "Body Armours",
+    "Gloves": "Gloves", "Boots": "Boots", "Sceptre": "Sceptres", "Spear": "Spears", "Jewel": "Jewels",
+    "Charm": "Charms", "Life Flask": "Life Flasks", "Mana Flask": "Mana Flasks", "Shield": "Shields",
+    "Buckler": "Bucklers", "Focus": "Foci", "Quiver": "Quivers", "Bow": "Bows", "Crossbow": "Crossbows",
+    "Wand": "Wands", "Staff": "Staves", "Quarterstaff": "Quarterstaves",
+}
+
+
+def desde_web(texto):
+    """Convierte un item copiado de la web del mercado (sin 'Rarity:' ni separadores) al formato del juego."""
+    if not texto or "Rarity:" in texto or "Item Level:" not in texto:
+        return None
+    lineas = [l.strip() for l in texto.replace("\r", "").split("\n") if l.strip()]
+    pos = next((i for i, l in enumerate(lineas[:4]) if l in CATEGORIAS_WEB), None)
+    if pos is None or pos == 0:
+        return None
+    props, mods = [], []
+    for l in lineas[pos + 1:]:
+        if re.search(r"\btotal\b", l):          # resumenes que anade la web (pseudo stats)
+            continue
+        (props if re.match(r"^[A-Za-z'() ]+:", l) else mods).append(l)
+    out = ["Item Class: " + CATEGORIAS_WEB[lineas[pos]], "Rarity: Rare"] + lineas[:pos]
+    if props:
+        out += [SEP] + props
+    if mods:
+        out += [SEP] + mods
+    return "\n".join(out)
+
+
 def es_item(texto):
-    return bool(texto) and "Rarity:" in texto and SEP in texto
+    if not texto:
+        return False
+    return ("Rarity:" in texto and SEP in texto) or desde_web(texto) is not None
 
 
 def limpiar(linea):
@@ -56,6 +88,7 @@ def clase_por_base(base):
 
 
 def parse_item(texto):
+    texto = desde_web(texto) or texto
     texto = texto.replace("\r", "")
     secciones = []
     for bloque in texto.split(SEP):
