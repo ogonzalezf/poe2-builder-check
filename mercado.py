@@ -35,6 +35,7 @@ CONFIG_DEFECTO = {
     "pausa_segundos": 2.5,
     "items_a_revisar": 10,
     "mostrar": 5,
+    "enlaces_directos": True,
     "user_agent": "poe2-builder-check/0.1 (github.com/ogonzalezf/poe2-builder-check)"
 }
 
@@ -319,9 +320,45 @@ def buscar(grupo_id, precio_max, moneda="divine", log=lambda m: None):
                 "aportes": res["aportes"], "sobran": res["sobran"], "avisos": res["avisos"],
                 "precio": precio.get("amount"), "moneda": precio.get("currency", ""),
                 "vendedor": ((x.get("listing") or {}).get("account") or {}).get("name", "?"),
+                "base": x["item"].get("baseType") or x["item"].get("typeLine"),
+                "mensaje": (x.get("listing") or {}).get("whisper"),
+                "enlace": None,
             })
     out["resultados"].sort(key=lambda d: (-d["puntos"], d["precio"] if d["precio"] is not None else 1e18))
+
+    # enlace directo a cada sugerencia: una busqueda que solo devuelve ese item
+    if cfg.get("enlaces_directos", True):
+        for n, d in enumerate(mejoras(out)[:cfg["mostrar"]], 1):
+            log("Creando el enlace directo %d..." % n)
+            d["enlace"] = enlace_item(cfg, liga, d, mer["grupos"][grupo_id])
     return out
+
+
+def mejoras(out):
+    """Resultados que superan a la pieza mas floja que llevas en ese slot."""
+    base = min([p for _, _, p in out["actual"]], default=0.0)
+    return [d for d in out["resultados"] if d["puntos"] > base + 0.005]
+
+
+def enlace_item(cfg, liga, d, gm):
+    """Busca por vendedor + base + precio exacto para obtener una pagina con solo ese item."""
+    if d["precio"] is None or not d["vendedor"] or d["vendedor"] == "?":
+        return None
+    q = {"status": {"option": cfg["estado"]},
+         "filters": {"trade_filters": {"filters": {
+             "account": {"input": d["vendedor"]},
+             "price": {"min": d["precio"], "max": d["precio"], "option": d["moneda"]}}}}}
+    if gm.get("nombre_unico"):
+        q["name"] = gm["nombre_unico"]
+    else:
+        q["type"] = d["base"]
+    try:
+        r = http(cfg, "POST", "/search/poe2/" + urllib.parse.quote(liga), {"query": q, "sort": {"price": "asc"}})
+    except ErrorMercado:
+        return None
+    if not r.get("id") or not r.get("result"):
+        return None
+    return "%s/%s/%s" % (WEB, urllib.parse.quote(liga), r["id"])
 
 
 def informe(out, mostrar=5):
@@ -330,8 +367,7 @@ def informe(out, mostrar=5):
         L.append("LO QUE LLEVAS PUESTO")
         for nombre, nota, _ in out["actual"]:
             L.append("  %s/10  %s" % (nota, nombre))
-    base = min([p for _, _, p in out["actual"]], default=0.0)
-    mejores = [d for d in out["resultados"] if d["puntos"] > base + 0.005]
+    mejores = mejoras(out)
     L.append("")
     L.append("Liga: %s - %d items encontrados, %d revisados, %d mejoran tu pieza%s"
              % (out["liga"], out["total"], len(out["resultados"]), len(mejores),
@@ -351,9 +387,13 @@ def informe(out, mostrar=5):
             L.append("     + %s: %.0f (%d%%)" % (nombre, valor, frac * 100))
         for s in d["sobran"][:4]:
             L.append("     - " + s)
+        if d.get("enlace"):
+            L.append("     Ir al item: " + d["enlace"])
+        if d.get("mensaje"):
+            L.append("     Mensaje para el chat del juego: " + d["mensaje"])
     L.append("")
     L.append("Guia: " + out["consejo"])
-    L.append("Ver y comprar en el navegador: " + out["url"])
+    L.append("Ver toda la busqueda en el navegador: " + out["url"])
     return "\n".join(L)
 
 
