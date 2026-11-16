@@ -210,7 +210,7 @@ def puntuar(item, cfg):
     res["nota"] = nota
 
     # lineas ya contadas dentro de un valor calculado (resistencias, dano del arma)
-    cubiertas = [r"^Recovers \d+ |^Consumes \d+ of|^Currently has \d+ Charges"]   # propiedades de frascos
+    cubiertas = [r"^Recovers \d+ |^Consumes \d+ of|^Currently has \d+ Charges|^Lasts |^Used when "]   # propiedades de frascos y charms
     derivs = {cfg["stats"][s].get("derivado") for s in grupo["pesos"]}
     if "res_total" in derivs:
         cubiertas.append(r"% to (Fire|Cold|Lightning) Resistance|% to all Elemental Resistances")
