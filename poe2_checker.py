@@ -25,7 +25,7 @@ def es_item(texto):
 
 def limpiar(linea):
     """Quita marcas como (implicit), (rune), (augmented) para mostrar."""
-    return re.sub(r"\s*\((implicit|rune|augmented|enchant|fractured|desecrated|unmet)\)", "", linea).strip()
+    return re.sub(r"\s*\((implicit|rune|augmented|enchant|fractured|desecrated|crafted|unmet)\)", "", linea).strip()
 
 
 CLASES_POR_BASE = [
