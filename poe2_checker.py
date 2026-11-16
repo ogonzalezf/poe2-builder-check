@@ -210,6 +210,8 @@ def puntuar(item, cfg):
         cubiertas.append(r"% to (Fire|Cold|Lightning) Resistance|% to all Elemental Resistances")
     if derivs & {"pdps", "edps"}:
         cubiertas.append(r"^Adds \d+ to \d+ \w+ Damage|increased Physical Damage|increased Attack Speed")
+    if "evasion" in grupo["pesos"]:   # ya incluidos en la evasion total del item
+        cubiertas.append(r"to Evasion Rating|increased Evasion Rating")
     res["sobran"] = [limpiar(l) for l in item["mods"]
                      if l not in usadas and not any(re.search(c, l) for c in cubiertas)]
     if grupo.get("nombres"):      # en un unico los demas mods son fijos: no son "sobrantes"
