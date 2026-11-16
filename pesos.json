@@ -60,7 +60,7 @@
       "clases": ["Body Armours"],
       "consejo": "Mas de 2500 de evasion y, si se puede, alguna resistencia.",
       "mods_para_10": 2,
-      "pesos": { "evasion": [10, 2500], "res_total": [5, 40], "vida": [4, 120], "res_caos": 2 }
+      "pesos": { "evasion": [10, 2500], "res_total": [5, 40], "deflexion": [5, 23], "vida": [4, 120], "res_caos": 2 }
     },
     "guantes": {
       "clases": ["Gloves"],
