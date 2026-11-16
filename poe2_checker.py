@@ -351,6 +351,9 @@ def main_ventana():
             estado["ultimo"] = texto
             if es_item(texto):
                 try:
+                    # deja guardado lo ultimo que se copio, para poder revisar una nota dudosa
+                    with open(os.path.join(BASE, "ultimo_copiado.txt"), "w", encoding="utf-8") as f:
+                        f.write(texto)
                     item = parse_item(texto)
                     res = puntuar(item, cargar_pesos())   # recarga pesos.json en cada item
                     c = color_nota(res["nota"])
