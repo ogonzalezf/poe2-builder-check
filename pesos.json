@@ -34,6 +34,7 @@
     "frasco_menos_cargas": { "nombre": "Menos cargas por uso", "patron": "(\\d+)% reduced Charges per use",          "bueno": 25 },
     "frasco_cargas":  { "nombre": "Cargas ganadas %",        "patron": "(\\d+)% increased Charges gained",            "bueno": 60 },
     "frasco_instant": { "nombre": "Recuperacion instantanea", "patron": "^Instant Recovery",                           "bueno": 1 },
+    "lavianga_roll":  { "nombre": "Reduccion de cantidad (menos es mejor)", "patron": "(\\d+)% reduced Amount Recovered", "bueno": 70 },
     "fisico_pct":    { "nombre": "Dano fisico % del arma",   "patron": "(\\d+)% increased Physical Damage",            "bueno": 200 }
   },
 
@@ -86,6 +87,12 @@
       "consejo": "119 vida, 15% a todas las resistencias, 30% dano de minions, +10 atributos. Base Prismatic o con mucha resistencia.",
       "mods_para_10": 4,
       "pesos": { "vida": [9, 119], "res_total": [9, 45], "dano_minions": [8, 30], "atributos": [4, 10], "crit_minions": [4, 29], "base_prismatic": 2, "res_caos": 2 }
+    },
+    "lavianga": {
+      "nombres": ["Lavianga's Spirits"],
+      "consejo": "Alternativa al frasco de mana de la guia: regenera mana siempre, sin usarlo. Mejor tirada: 70% reduced.",
+      "mods_para_10": 2,
+      "pesos": { "lavianga_roll": [8, 70, 80], "frasco_menos_cargas": 2 }
     },
     "frascos": {
       "clases": ["Life Flasks", "Mana Flasks"],
