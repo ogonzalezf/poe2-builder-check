@@ -36,7 +36,7 @@ Las reglas de puntuación que salen de este perfil están en `pesos.json`.
 | Pechera | Rift Sanctuary, Slipstrike Vest: 2574 evasión, 99% res, 23% deflexión | 10 | |
 | Charm | Silver Charm: 30% duración, 56% cargas | 10 | |
 | Arma 2 | Sorrow Chant, Rattling Sceptre: +4 Minion Skills, 132% daño aliados, 31% Spirit, 13% vel. ataque | 9 | Daño crítico de aliados |
-| Botas | Ghoul Dash, Runeforged Dragonscale Boots: 30% vel., 127 vida, 74% res, 22% deflexión, 64 Runic Ward | 9 | Algo de vida y resistencia |
+| Botas | Ghoul Dash, Runeforged Dragonscale Boots: 30% vel., 127 vida, 74% res, 22% deflexión, 64 Runic Ward | 10 | |
 | Charm | Thawing Charm: 18% duración, 55% cargas | 9 | |
 | Guantes | Hate Clutches, Polished Bracers: 118 vida, 122% res, 379 evasión | 9 | Algo de vida y evasión |
 | Frasco maná | Lavianga's Spirits, 70% reduced (mejor tirada) | 8 | No es el tipo que pide la guía |
